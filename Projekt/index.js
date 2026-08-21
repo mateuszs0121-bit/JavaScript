@@ -1,1 +1,2 @@
-const a = "asasasa";
+const a = "qwerty";
+console.log(a);
