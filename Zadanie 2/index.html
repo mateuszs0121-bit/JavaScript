@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .big {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">Kliknij mnie</button>
+    <ul id="list"></ul>
+    <script>
+      const button = document.querySelector("button");
+      const list = document.querySelector("ul");
+      let counter = 1;
+
+      button.addEventListener("click", function () {
+        const li = document.createElement("li");
+        li.textContent = counter;
+        // document.querySelector("ul").appendChild(li);
+        // const list = document.querySelector("ul");
+        list.appendChild(li);
+
+        if (counter % 3 === 0) {
+          li.classList.add("big");
+        }
+        counter += 2;
+      });
+    </script>
+  </body>
+</html>
