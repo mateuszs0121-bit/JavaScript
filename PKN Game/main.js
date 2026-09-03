@@ -20,4 +20,16 @@ function handSelection() {
   this.style.boxShadow = "0 0 0 4px green";
 }
 
+function aiChoice() {
+  return hands[Math.floor(Math.random() * 3)].dataset.option;
+}
+
+function startGame() {
+  if (!game.playerHand) return alert("Wybierz dłoń, aby rozpocząć grę!");
+  console.log("Przechodzę dalej");
+  game.aiHand = aiChoice();
+}
+
 hands.forEach((hand) => hand.addEventListener("click", handSelection));
+
+document.querySelector(".start").addEventListener("click", startGame);
