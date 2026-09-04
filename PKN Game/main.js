@@ -50,7 +50,7 @@ function publishResult(player, ai, result) {
     document.querySelector("p.wins span").textContent = ++gameSummary.wins;
     document.querySelector("[data-summary='winner']").textContent = "Wygrałeś!";
     document.querySelector("[data-summary='winner']").style.color = "green";
-  } else if ((result = "loss")) {
+  } else if (result === "loss") {
     document.querySelector("p.losses span").textContent = ++gameSummary.losses;
     document.querySelector("[data-summary='winner']").textContent =
       "Przegrałeś!";
@@ -58,6 +58,7 @@ function publishResult(player, ai, result) {
   } else {
     document.querySelector("p.draws span").textContent = ++gameSummary.draws;
     document.querySelector("[data-summary='winner']").textContent = "Remis!";
+    document.querySelector("[data-summary='winner']").style.color = "grey";
   }
 }
 
