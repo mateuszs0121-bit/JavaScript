@@ -62,6 +62,13 @@ function publishResult(player, ai, result) {
   }
 }
 
+function endGame() {
+  document.querySelector(`[data-option="${game.playerHand}"]`).style.boxShadow =
+    "";
+  game.playerHand = "";
+  game.aiHand = "";
+}
+
 function startGame() {
   if (!game.playerHand) {
     return alert("Wybierz dłoń, aby rozpocząć grę!");
@@ -72,6 +79,7 @@ function startGame() {
   const gameResult = checkResult(game.playerHand, game.aiHand);
   console.log(gameResult);
   publishResult(game.playerHand, game.aiHand, gameResult);
+  endGame();
 }
 
 hands.forEach((hand) => hand.addEventListener("click", handSelection));
