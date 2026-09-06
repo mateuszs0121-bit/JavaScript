@@ -1,9 +1,11 @@
 const spanText = document.querySelector(".text");
+const spanCursor = document.querySelector(".cursor");
 const txt =
   "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non explicabo facere id nostrum sint saepe odit. Aperiam, maxime eos. Sequi harum quod provident libero facere quos dolorem rerum recusandae ipsa.";
 
 let indexText = 0;
 const time = 40;
+
 const addLetter = () => {
   //   console.log("ok");
   spanText.textContent += txt[indexText];
@@ -13,3 +15,9 @@ const addLetter = () => {
   }
 };
 const indexTyping = setInterval(addLetter, time);
+
+const cursorAnimation = () => {
+  spanCursor.classList.toggle("active");
+};
+
+setInterval(cursorAnimation, 400);
