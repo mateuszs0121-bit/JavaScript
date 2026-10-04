@@ -1,3 +1,12 @@
+const array = [12, 23, 34, 45, 56, 67, 78, 89];
+const oddNumbers = array.filter((number) => number % 2);
+const evenNumbers = array.filter((number) => !(number % 2));
+const numbesBiggerThan50 = array.filter((number) => number > 50);
+
+const double = array.map((number) => number + " osób");
+
+array.forEach((number, index) => (array[index] = number * 2));
+
 const removeTask = (e) => {
   //   console.log(e.target.textContent);
   //   e.target.parentNode.remove();
