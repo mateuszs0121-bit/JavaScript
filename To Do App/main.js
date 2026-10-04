@@ -7,9 +7,32 @@ const double = array.map((number) => number + " osób");
 
 array.forEach((number, index) => (array[index] = number * 2));
 
-const input = document.querySelector("input");
+const form = document.querySelector("form");
+const h1 = document.querySelector("h1 span");
+const input = document.querySelector("input.search-input");
 const ul = document.querySelector("ul");
 const li = document.querySelectorAll("li");
+const add = document.querySelector("input.task-input");
+const liNumber = document.querySelectorAll("li").length;
+h1.textContent = liNumber;
+const addTask = (e) => {
+  e.preventDefault();
+
+  const titleTask = add.value;
+  console.log(titleTask);
+  if (titleTask !== "") {
+    const newTask = document.createElement("li");
+    newTask.className = "task";
+    newTask.innerHTML = titleTask + "<button>Usuń</button>";
+    ul.appendChild(newTask);
+    add.value = "";
+    newTask.querySelector("button").addEventListener("click", removeTask);
+  }
+  const liNumber = document.querySelectorAll("li").length;
+  h1.textContent = liNumber;
+};
+
+form.addEventListener("submit", addTask);
 
 const searchTask = (e) => {
   const searchText = e.target.value.toLowerCase();
@@ -31,7 +54,10 @@ const removeTask = (e) => {
   //   e.target.parentNode.style.textDecoration = "line-through";
   //   e.target.remove();
   const index = e.target.dataset.key;
-  document.querySelector(`li[data-key = "${index}"]`).remove();
+  //   document.querySelector(`li[data-key = "${index}"]`).remove();
+  document.querySelector("li").remove();
+  const liNumber = document.querySelectorAll("li").length;
+  h1.textContent = liNumber;
 };
 
 document.querySelectorAll("button[data-key]").forEach((item) => {
