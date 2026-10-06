@@ -70,8 +70,8 @@ const removeTask = (e) => {
   console.log(toDoList);
   toDoList.splice(index, 1);
   renderList();
-  //   document.querySelector(`li[data-key = "${index}"]`).remove();
-  document.querySelector("li").remove();
+  //document.querySelector(`li[data-key = "${index}"]`).remove();
+  //document.querySelector("li").remove();
   const liNumber = document.querySelectorAll("li").length;
   h1.textContent = liNumber;
 };
