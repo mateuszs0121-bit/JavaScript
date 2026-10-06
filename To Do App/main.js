@@ -1,4 +1,5 @@
 const array = [12, 23, 34, 45, 56, 67, 78, 89];
+const toDoList = [];
 const oddNumbers = array.filter((number) => number % 2);
 const evenNumbers = array.filter((number) => !(number % 2));
 const numbesBiggerThan50 = array.filter((number) => number > 50);
@@ -15,6 +16,15 @@ const li = document.querySelectorAll("li");
 const add = document.querySelector("input.task-input");
 const liNumber = document.querySelectorAll("li").length;
 h1.textContent = liNumber;
+
+const renderList = () => {
+  ul.textContent = "";
+  toDoList.forEach((toDoElement, key) => {
+    toDoElement.dataset.key = key;
+    ul.appendChild(toDoElement);
+  });
+};
+
 const addTask = (e) => {
   e.preventDefault();
 
@@ -24,6 +34,8 @@ const addTask = (e) => {
     const newTask = document.createElement("li");
     newTask.className = "task";
     newTask.innerHTML = titleTask + "<button>Usuń</button>";
+    toDoList.push(newTask);
+    renderList();
     ul.appendChild(newTask);
     add.value = "";
     newTask.querySelector("button").addEventListener("click", removeTask);
@@ -53,7 +65,11 @@ const removeTask = (e) => {
   //   console.log(e.target.parentNode);
   //   e.target.parentNode.style.textDecoration = "line-through";
   //   e.target.remove();
-  const index = e.target.dataset.key;
+  const index = e.target.parentNode.dataset.key;
+  console.log(index);
+  console.log(toDoList);
+  toDoList.splice(index, 1);
+  renderList();
   //   document.querySelector(`li[data-key = "${index}"]`).remove();
   document.querySelector("li").remove();
   const liNumber = document.querySelectorAll("li").length;
